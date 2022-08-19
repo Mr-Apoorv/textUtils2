@@ -2,17 +2,23 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 export default function TextForm(props) {
-    const [text, setText] = useState("Enter text here");
+    const [text, setText] = useState("");
     function handleUppClick() {
         console.log("button clicked");
         let textInUppercase=text.toUpperCase();
         setText(textInUppercase);
+    }
+    function handleLowClick() {
+        console.log("button clicked");
+        let textInLowercase=text.toLowerCase();
+        setText(textInLowercase);
     }
     function handleTextChange(event) {
         console.log(`text changed`);
         setText(event.target.value);
     }
   return (
+    <>
     <div>
       <h1>{props.heading}</h1>
       <div className="mb-3">
@@ -24,8 +30,17 @@ export default function TextForm(props) {
           onChange={handleTextChange}
         ></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUppClick}>Convert to Uppercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleUppClick}>Convert to Uppercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to Lowercase</button>
     </div>
+    <div>
+        <h2>Summary of texts</h2>
+        <p>Your text has {text.split(" ").length} words and {text.length} characters</p>
+        <p>{(0.008 * text.split(" ").length).toFixed(3)} minute read</p>
+        <h2>Preview</h2>
+        <pre>{text}</pre>
+    </div>
+    </>
   );
 }
 
