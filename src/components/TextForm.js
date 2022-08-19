@@ -3,21 +3,36 @@ import PropTypes from "prop-types";
 
 export default function TextForm(props) {
     const [text, setText] = useState("");
+
     function handleUppClick() {
         console.log("button clicked");
         let textInUppercase=text.toUpperCase();
         setText(textInUppercase);
     }
+
     function handleLowClick() {
         console.log("button clicked");
         let textInLowercase=text.toLowerCase();
         setText(textInLowercase);
     }
+
     function handleClearClick() {
         console.log("button clicked");
         let textCleared="";
         setText(textCleared);
     }
+
+    function handleCopy() {
+        let inputText=document.getElementById("exampleFormControlTextarea1");
+        inputText.select(); // will select text (not required for copying, just for display)
+        navigator.clipboard.writeText(inputText.value); // will copy the text in clipboard, then it can be pasted anywhere (required and main code line for copy)
+    }
+
+    function handleExtraSpaces() {
+        let inputText=text.split(/[ ]+/);
+        setText(inputText.join(" "));
+    }
+
     function handleTextChange(event) {
         console.log(`text changed`);
         setText(event.target.value);
@@ -38,6 +53,8 @@ export default function TextForm(props) {
       <button className="btn btn-primary mx-1" onClick={handleUppClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to Lowercase</button>
       <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear</button>
+      <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy text</button>
+      <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra spaces</button>
     </div>
     <div>
         <h2>Summary of texts</h2>
