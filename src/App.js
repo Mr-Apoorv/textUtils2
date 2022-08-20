@@ -26,11 +26,19 @@ function App() {
       document.body.style.backgroundColor = "#042743";
       // document.body.style.color = "white";
       showAlert("Dark mode enabled", "success");
+      document.title = "Text Utils - Dark Mode";
+      // setInterval(() => {
+      //   document.title = "Text Utils is Amazing";
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title = "Install Text Utils";
+      // }, 1500);
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       // document.body.style.color = "black";
       showAlert("Light mode enabled", "success");
+      document.title = "Text Utils - Light Mode";
     }
   };
 

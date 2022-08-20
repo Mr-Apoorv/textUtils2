@@ -42,6 +42,17 @@ export default function TextForm(props) {
     console.log(`text changed`);
     setText(event.target.value);
   }
+
+  const removeEmptyStringFromArray = (arr) => {
+    let arr2 = [];
+    arr.forEach((element) => {
+      if (element !== " " && element !== "") {
+        arr2.push(element);
+      }
+    });
+    return arr2;
+  };
+
   return (
     <>
       <div style={{ color: props.mode === "dark" ? "white" : "black" }}>
@@ -89,16 +100,6 @@ export default function TextForm(props) {
     </>
   );
 }
-
-const removeEmptyStringFromArray = (arr) => {
-  let arr2 = [];
-  arr.forEach((element) => {
-    if (element !== " " && element !== "") {
-      arr2.push(element);
-    }
-  });
-  return arr2;
-};
 
 TextForm.propTypes = {
   heading: PropTypes.string.isRequired,
