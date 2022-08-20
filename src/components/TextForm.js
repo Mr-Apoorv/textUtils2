@@ -8,29 +8,34 @@ export default function TextForm(props) {
     console.log("button clicked");
     let textInUppercase = text.toUpperCase();
     setText(textInUppercase);
+    props.showAlert("Text changed to Uppercase", "success");
   }
 
   function handleLowClick() {
     console.log("button clicked");
     let textInLowercase = text.toLowerCase();
     setText(textInLowercase);
+    props.showAlert("Text changed to Lowercase", "success");
   }
 
   function handleClearClick() {
     console.log("button clicked");
     let textCleared = "";
     setText(textCleared);
+    props.showAlert("Text cleared", "success");
   }
 
   function handleCopy() {
     let inputText = document.getElementById("exampleFormControlTextarea1");
     inputText.select(); // will select text (not required for copying, just for display)
     navigator.clipboard.writeText(inputText.value); // will copy the text in clipboard, then it can be pasted anywhere (required and main code line for copy)
+    props.showAlert("Text copied to clipboard", "success");
   }
 
   function handleExtraSpaces() {
     let inputText = text.split(/[ ]+/);
     setText(inputText.join(" "));
+    props.showAlert("Removed extra spaces", "success");
   }
 
   function handleTextChange(event) {
