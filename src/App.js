@@ -8,6 +8,7 @@ import Alert from "./components/Alert";
 function App() {
   const [mode, setMode] = useState("light");
   const [alert, setAlert] = useState(null);
+  // const [theme, setTheme] = useState(null);
 
   const showAlert = (message, type) => {
     setAlert({
@@ -32,11 +33,36 @@ function App() {
       showAlert("Light mode enabled", "success");
     }
   };
+
+  const handleRadioToggleMode = (theme) => {
+    if (theme === "red") {
+      setMode("light");
+      document.body.style.backgroundColor = "red";
+      document.body.style.color = "white";
+      showAlert("Red theme enabled", "success");
+    } else if (theme === "yellow") {
+      setMode("light");
+      document.body.style.backgroundColor = "yellow";
+      document.body.style.color = "black";
+      showAlert("Yellow theme enabled", "success");
+    } else if (theme === "green") {
+      setMode("light");
+      document.body.style.backgroundColor = "green";
+      document.body.style.color = "white";
+      showAlert("Green theme enabled", "success");
+    }
+  };
+
   return (
     <>
       {/* <NavBar title="Text-Utils" aboutText="About-textUtils"/> */}
       {/* <NavBar/> */}
-      <NavBar title="Text-Utils" mode={mode} toggleMode={handleToggleMode} />
+      <NavBar
+        title="Text-Utils"
+        mode={mode}
+        toggleMode={handleToggleMode}
+        radioToggleMode={handleRadioToggleMode}
+      />
       <Alert alert={alert} />
       <div className="container">
         <TextForm

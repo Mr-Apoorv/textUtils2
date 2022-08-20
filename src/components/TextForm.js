@@ -79,8 +79,8 @@ export default function TextForm(props) {
       <div style={{ color: props.mode === "dark" ? "white" : "black" }}>
         <h2>Summary of texts</h2>
         <p>
-          Your text has {text.split(" ").length} words and {text.length}{" "}
-          characters
+          Your text has {removeEmptyStringFromArray(text.split(" ")).length}{" "}
+          words and {text.length} characters
         </p>
         <p>{(0.008 * text.split(" ").length).toFixed(3)} minute read</p>
         <h2>Preview</h2>
@@ -89,6 +89,16 @@ export default function TextForm(props) {
     </>
   );
 }
+
+const removeEmptyStringFromArray = (arr) => {
+  let arr2 = [];
+  arr.forEach((element) => {
+    if (element !== " " && element !== "") {
+      arr2.push(element);
+    }
+  });
+  return arr2;
+};
 
 TextForm.propTypes = {
   heading: PropTypes.string.isRequired,
