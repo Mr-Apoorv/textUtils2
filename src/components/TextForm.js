@@ -66,24 +66,44 @@ export default function TextForm(props) {
             onChange={handleTextChange}
             style={
               props.mode === "dark"
-                ? { backgroundColor: "gray", color: "white" }
+                ? { backgroundColor: "skyblue", color: "white" }
                 : { backgroundColor: "white", color: "black" }
             }
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUppClick}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleUppClick}
+          disabled={text.length === 0}
+        >
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowClick}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleLowClick}
+          disabled={text.length === 0}
+        >
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleClearClick}
+          disabled={text.length === 0}
+        >
           Clear
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleCopy}
+          disabled={text.length === 0}
+        >
           Copy text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleExtraSpaces}
+          disabled={text.length === 0}
+        >
           Remove Extra spaces
         </button>
       </div>
@@ -93,7 +113,12 @@ export default function TextForm(props) {
           Your text has {removeEmptyStringFromArray(text.split(" ")).length}{" "}
           words and {text.length} characters
         </p>
-        <p>{(0.008 * text.split(" ").length).toFixed(3)} minute read</p>
+        <p>
+          {(0.008 * removeEmptyStringFromArray(text.split(" ")).length).toFixed(
+            3
+          )}
+          minute read
+        </p>
         <h2>Preview</h2>
         <pre>{text}</pre>
       </div>

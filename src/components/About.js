@@ -1,32 +1,45 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
-  const [theme, setTheme] = useState({
-    color: "black",
-    backgroundColor: "white",
-    // border: "1px solid white",
-  });
+export default function About(props) {
+  // const [btnText, setBtnText] = useState("Enable Dark Mode");
 
-  const handleToggleTheme = () => {
-    if (theme.color === "white") {
-      console.log(`dark theme`);
-      setBtnText("Enable Light Mode");
-      setTheme({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setBtnText("Enable Dark Mode");
-    } else {
-      console.log(`white theme`);
-      setTheme({
-        color: "white",
-        backgroundColor: "#00000f",
-        border: "1px solid white",
-      });
-      setBtnText("Enable Light Mode");
-    }
-  };
+  // const [theme, setTheme] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  //   // border: "1px solid white",
+  // });
+
+  // const handleToggleTheme = () => {
+  //   if (theme.color === "white") {
+  //     console.log(`dark theme`);
+  //     setBtnText("Enable Light Mode");
+  //     setTheme({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
+  //     setBtnText("Enable Dark Mode");
+  //   } else {
+  //     console.log(`white theme`);
+  //     setTheme({
+  //       color: "white",
+  //       backgroundColor: "#00000f",
+  //       border: "1px solid white",
+  //     });
+  //     setBtnText("Enable Light Mode");
+  //   }
+  // };
+
+  let theme =
+    props.mode === "light"
+      ? {
+          color: "black",
+          backgroundColor: "white",
+        }
+      : {
+          color: "white",
+          backgroundColor: "#00000f",
+          border: "1px solid white",
+        };
 
   return (
     <div className="my-3">
@@ -129,9 +142,9 @@ export default function About() {
         </div>
       </div>
       <div className="container">
-        <button className="btn btn-primary my-3" onClick={handleToggleTheme}>
+        {/* <button className="btn btn-primary my-3" onClick={handleToggleTheme}>
           {btnText}
-        </button>
+        </button> */}
       </div>
     </div>
   );
